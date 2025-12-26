@@ -1,0 +1,9 @@
+import jwt from "jsonwebtoken";
+
+export default function generateJWT(user) {
+  return jwt.sign(
+    { id: user._id, role: user.role, tenantId: user.tenantId },
+    process.env.JWT_SECRET,
+    { expiresIn: "7d" }
+  );
+}
